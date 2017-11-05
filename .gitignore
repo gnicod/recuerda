@@ -104,3 +104,6 @@ ENV/
 node_modules/
 
 recuerda-serverless/src/
+.swp
+.swo
+.swc
