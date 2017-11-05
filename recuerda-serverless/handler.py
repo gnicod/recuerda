@@ -6,6 +6,7 @@ from pylinguee import Linguee
 dynamodb = boto3.resource('dynamodb')
 translator = Translator()
 linguee = Linguee()
+table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -13,8 +14,18 @@ class DecimalEncoder(json.JSONEncoder):
             return int(obj)
         return super(DecimalEncoder, self).default(obj)
 
+def list(event, context):
+    body = {
+        "history": table.scan()
+    }
+    response = {
+        "statusCode": 200,
+        "body": json.dumps(body, cls=DecimalEncoder)
+    }
+    return response
+
+
 def search(event, context):
-    table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
     query = event['pathParameters']['query']
     src = event['pathParameters']['src']
     dest = event['pathParameters']['dest']

@@ -17,7 +17,7 @@ custom:
   pythonRequirements:
     dockerizePip: true
 
-service: recuerda-serverless
+service: recuerda
 
 # You can pin your service to only deploy with a specific Serverless version
 # Check out our docs for more details
@@ -79,13 +79,15 @@ package:
 functions:
   search:
     handler: handler.search
-
-#    The following are a few example events you can configure
-#    NOTE: Please make sure to change your handler code to work with those events
-#    Check the event documentation for details
     events:
       - http:
           path: search/{src}/{dest}/{query}
+          method: get
+  list:
+    handler: handler.list
+    events:
+      - http:
+          path: list
           method: get
 #          request:
 #              parameters:
@@ -130,7 +132,7 @@ functions:
 #       Value: "Some output value"
 resources:
   Resources:
-    TodosDynamoDbTable:
+    RecuerdaDynamoDbTable:
       Type: 'AWS::DynamoDB::Table'
       DeletionPolicy: Retain
       Properties:
