@@ -102,3 +102,5 @@ ENV/
 
 # node_module
 node_modules/
+
+recuerda-serverless/src/
