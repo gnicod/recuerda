@@ -104,6 +104,9 @@ ENV/
 node_modules/
 
 recuerda-serverless/src/
-.swp
-.swo
-.swc
+*.swp
+*.swo
+*.swc
+
+webapp/node_modules/
+webapp/src/auth/auth0-variables.js

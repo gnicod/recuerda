@@ -77,18 +77,35 @@ package:
 #    - exclude-me-dir/**
 
 functions:
+  auth:
+      runtime: nodejs4.3
+      handler: auth.authorize
+      timeout: 20
+
   search:
+    runtime: python3.6
     handler: handler.search
     events:
       - http:
           path: search/{src}/{dest}/{query}
           method: get
   list:
+    runtime: python3.6
     handler: handler.list
     events:
       - http:
           path: list
           method: get
+          authorizer: auth
+          cors:
+            origins:
+              - '*'
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
 #          request:
 #              parameters:
 #                  paths:
