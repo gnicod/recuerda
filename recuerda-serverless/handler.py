@@ -2,6 +2,7 @@ import json, boto3, os, decimal
 from urllib.parse import unquote
 from googletrans import Translator
 from pylinguee import Linguee
+from boto3.dynamodb.conditions import Key, Attr
 
 dynamodb = boto3.resource('dynamodb')
 translator = Translator()
@@ -14,9 +15,15 @@ class DecimalEncoder(json.JSONEncoder):
             return int(obj)
         return super(DecimalEncoder, self).default(obj)
 
+def get_user_id(event):
+    return event['requestContext']['authorizer']['principalId']
+
 def list(event, context):
     body = {
-        "history": table.scan()
+        "history": table.scan(
+            FilterExpression=Attr('user_id').eq(get_user_id(event))
+        )['Items'],
+        "event": event
     }
     response = {
         "statusCode": 200,
@@ -33,8 +40,8 @@ def search(event, context):
     try:
         #result = table.scan(ConsistentRead=True)
         body = {
-            #"input": event,
             #"results": result.get('Items'),
+            "user_id": get_user_id(event),
             "query": query,
             "googleTranslation": translated,
             "linguee": linguee.translate(query)
