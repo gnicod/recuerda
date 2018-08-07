@@ -8,11 +8,11 @@
   export default {
     name: 'callback',
     props: ['auth'],
-    data () {
-      this.auth.handleAuthentication()
-      return {}
-    }
-  }
+    data() {
+      this.auth.handleAuthentication();
+      return {};
+    },
+  };
 </script>
 
 <style>
