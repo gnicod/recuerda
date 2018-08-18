@@ -1,13 +1,10 @@
+import itertools
 import json, boto3, os, decimal
-from urllib.parse import unquote
-from googletrans import Translator
-from pylinguee import Linguee
 from boto3.dynamodb.conditions import Key, Attr
 
 dynamodb = boto3.resource('dynamodb')
-translator = Translator()
-linguee = Linguee()
 table = dynamodb.Table(os.environ['DYNAMODB_TABLE'])
+
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -15,36 +12,93 @@ class DecimalEncoder(json.JSONEncoder):
             return int(obj)
         return super(DecimalEncoder, self).default(obj)
 
+
 def get_user_id(event):
     return event['requestContext']['authorizer']['principalId']
 
-def list(event, context):
+
+def tags(event, context):
+    items = table.scan(
+        FilterExpression=Attr('user_id').eq(get_user_id(event))
+    )['Items']
+    _tags = []
+    merged_tags = []
+    try:
+        _tags = [it['tags'] for it in items if ("tags" in it and it["tags"] is not None)]
+        merged_tags = [y for x in _tags for y in x]
+    except Exception as e:
+        merged_tags = str(e)
     body = {
-        "history": table.scan(
-            FilterExpression=Attr('user_id').eq(get_user_id(event))
-        )['Items'],
-        "event": event
+        "tags": merged_tags
     }
     response = {
         "statusCode": 200,
+        "headers": {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': True,
+        },
         "body": json.dumps(body, cls=DecimalEncoder)
     }
     return response
+
+
+def list(event, context):
+    body = {
+        "memos": table.scan(
+            FilterExpression=Attr('user_id').eq(get_user_id(event))
+        )['Items'],
+        # "event": event
+    }
+    response = {
+        "statusCode": 200,
+        "headers": {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': True,
+        },
+        "body": json.dumps(body, cls=DecimalEncoder)
+    }
+    return response
+
+
+def add_memo(event, context):
+    try:
+        data = json.loads(event["body"])
+        body = {
+            "user_id": get_user_id(event),
+            "front": data["front"],
+            "back": data["back"],
+            "tags": data["tags"],
+        }
+        table.put_item(Item=body)
+        response = {
+            "statusCode": 200,
+            "headers": {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': True,
+            },
+            "body": json.dumps(body, cls=DecimalEncoder)
+        }
+        return response
+    except Exception as ex:
+        template = "An exception of type {0} occurred. Arguments:\n{1!r}"
+        message = template.format(type(ex).__name__, ex.args)
+        response = {
+            "statusCode": 200,
+            "body": message
+        }
+        return response
 
 
 def search(event, context):
     query = event['pathParameters']['query']
     src = event['pathParameters']['src']
     dest = event['pathParameters']['dest']
-    translated = translator.translate(unquote(query), src=src, dest=dest).text
     try:
-        #result = table.scan(ConsistentRead=True)
+        # result = table.scan(ConsistentRead=True)
         body = {
-            #"results": result.get('Items'),
+            # "results": result.get('Items'),
             "user_id": get_user_id(event),
             "query": query,
-            "googleTranslation": translated,
-            "linguee": linguee.translate(query)
         }
         table.put_item(Item=body)
         response = {

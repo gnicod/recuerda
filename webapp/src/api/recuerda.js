@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'https://ry0dldfiw5.execute-api.eu-west-1.amazonaws.com/dev';
+const API_URL = 'https://1uwlb89d1i.execute-api.eu-west-1.amazonaws.com/dev';
 
 function callApi(path = '', method = 'get', payload = null) {
   return axios({
@@ -19,17 +19,24 @@ function callApi(path = '', method = 'get', payload = null) {
  * Add memo
  * @param {*} front
  * @param {*} back
- * @param {*} tag
+ * @param {*} tags
  * @param {*} notes
  */
-export function addMemo(front, back, tag = null, notes = null) {
+export function addMemo(front, back, tags = null, notes = null) {
   const payload = {
     front,
     back,
-    tag,
+    tags,
     notes,
   };
-  return callApi('/memo', 'POST', payload);
+  return callApi('/addMemo', 'POST', payload);
+}
+
+/**
+ * return a list of memo
+ */
+export function getTags() {
+  return callApi('/tags');
 }
 
 /**

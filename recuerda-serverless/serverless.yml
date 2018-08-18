@@ -1,6 +1,6 @@
 plugins:
   - serverless-python-requirements
-
+  - serverless-s3-sync
 custom:
   pythonRequirements:
     dockerizePip: true
@@ -50,15 +50,7 @@ functions:
           path: search/{src}/{dest}/{query}
           method: get
           authorizer: auth
-          cors:
-            origins:
-              - '*'
-            headers:
-              - Content-Type
-              - X-Amz-Date
-              - Authorization
-              - X-Api-Key
-              - X-Amz-Security-Token
+          cors: true
   list:
     runtime: python3.6
     handler: handler.list
@@ -67,15 +59,25 @@ functions:
           path: list
           method: get
           authorizer: auth
-          cors:
-            origins:
-              - '*'
-            headers:
-              - Content-Type
-              - X-Amz-Date
-              - Authorization
-              - X-Api-Key
-              - X-Amz-Security-Token
+          cors: true
+  addMemo:
+    runtime: python3.6
+    handler: handler.add_memo
+    events:
+    - http:
+        path: addMemo
+        method: post
+        authorizer: auth
+        cors: true
+  tags:
+    runtime: python3.6
+    handler: handler.tags
+    events:
+    - http:
+        path: tags
+        method: get
+        authorizer: auth
+        cors: true
 
 resources:
   Resources:
@@ -85,11 +87,11 @@ resources:
       Properties:
         AttributeDefinitions:
           -
-            AttributeName: query
+            AttributeName: front
             AttributeType: S
         KeySchema:
           -
-            AttributeName: query
+            AttributeName: front
             KeyType: HASH
         ProvisionedThroughput:
           ReadCapacityUnits: 1

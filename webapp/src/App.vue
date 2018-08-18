@@ -1,24 +1,15 @@
 <template>
   <v-app>
     <v-toolbar
+      color="white"
       app
       :clipped-left="clipped"
     >
-      <v-btn icon @click.stop="fixed = !fixed">
-        <v-icon>remove</v-icon>
-      </v-btn>
       <v-toolbar-title v-text="title"></v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>menu</v-icon>
       </v-btn>
-    </v-toolbar>
-    <v-content>
-      <router-view
-        :auth="auth"
-        :authenticated="authenticated">
-      </router-view>
-
       <v-btn color="info"
              id="qsLoginBtn"
              class="btn btn-primary btn-margin"
@@ -35,6 +26,13 @@
         @click="logout()">
         Log Out
       </v-btn>
+    </v-toolbar>
+    <v-content>
+      <router-view
+        :auth="auth"
+        :authenticated="authenticated">
+      </router-view>
+
     </v-content>
     <v-navigation-drawer
       temporary
@@ -68,7 +66,6 @@
   export default {
     data() {
       authNotifier.on('authChange', (authState) => {
-        console.log('looooo');
         this.authenticated = authState.authenticated;
       });
       return {
@@ -82,7 +79,7 @@
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'Vuetify.js',
+        title: 'Recuerda',
         auth,
         authenticated,
       };

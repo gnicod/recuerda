@@ -3,5 +3,9 @@
     "jsonwebtoken": "^7.1.9",
     "jwk-to-pem": "^1.2.6",
     "request": "^2.82.0"
+  },
+  "devDependencies": {
+    "serverless-python-requirements": "^4.1.1",
+    "serverless-s3-sync": "^1.6.1"
   }
 }
