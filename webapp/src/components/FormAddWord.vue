@@ -32,9 +32,7 @@
           </v-chip>
         </template>
       </v-combobox>
-      <div>
-        <v-btn depressed large block v-on:click="addWord">Add</v-btn>
-      </div>
+        <v-btn v-if="Object.keys(word).length !== 0" depressed large block v-on:click="addWord">Add</v-btn>
     </v-form>
     <v-snackbar
       v-model="snackbar"
@@ -71,8 +69,8 @@
       };
     },
     watch: {
-      word(newVal, oldVal) { // watch it
-        console.log('Prop changed: ', newVal, ' | was: ', oldVal);
+      word(newVal) {
+        this.notes = newVal.notes;
         this.front = newVal.front;
         this.back = newVal.back;
         this.tags = newVal.tags;
@@ -81,7 +79,6 @@
     mounted() {
       getTags()
         .then((res) => {
-          console.log(res);
           this.items = res.data.tags;
         });
     },
