@@ -17,6 +17,29 @@ def get_user_id(event):
     return event['requestContext']['authorizer']['principalId']
 
 
+def me(event, context):
+    items = table.scan(
+        FilterExpression=Attr('user_id').eq(get_user_id(event))
+    )['Items']
+    langs = []
+    try:
+        langs = [it['lang'] for it in items if ("lang" in it and it["lang"] is not None)]
+    except Exception as e:
+        langs = str(e)
+    body = {
+        "langs": langs
+    }
+    response = {
+        "statusCode": 200,
+        "headers": {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': True,
+        },
+        "body": json.dumps(body, cls=DecimalEncoder)
+    }
+    return response
+
+
 def tags(event, context):
     items = table.scan(
         FilterExpression=Attr('user_id').eq(get_user_id(event))
@@ -68,6 +91,7 @@ def add_memo(event, context):
             "front": data["front"],
             "back": data["back"],
             "tags": data["tags"],
+            "lang": data["lang"],
         }
         table.put_item(Item=body)
         response = {

@@ -19,13 +19,15 @@ function callApi(path = '', method = 'get', payload = null) {
  * Add memo
  * @param {*} front
  * @param {*} back
+ * @param lang
  * @param {*} tags
  * @param {*} notes
  */
-export function addMemo(front, back, tags = null, notes = null) {
+export function addMemo(front, back, lang, tags = null, notes = null) {
   const payload = {
     front,
     back,
+    lang,
     tags,
     notes,
   };
@@ -33,10 +35,17 @@ export function addMemo(front, back, tags = null, notes = null) {
 }
 
 /**
- * return a list of memo
+ * return a list of tags
  */
 export function getTags() {
   return callApi('/tags');
+}
+
+/**
+ * return info about connected user
+ */
+export function me() {
+  return callApi('/me');
 }
 
 /**

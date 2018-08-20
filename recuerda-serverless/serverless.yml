@@ -78,6 +78,15 @@ functions:
         method: get
         authorizer: auth
         cors: true
+  me:
+    runtime: python3.6
+    handler: handler.me
+    events:
+    - http:
+        path: me
+        method: get
+        authorizer: auth
+        cors: true
 
 resources:
   Resources:

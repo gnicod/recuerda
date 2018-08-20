@@ -37,7 +37,7 @@
     <v-card v-for="it in words" style="width: 100%" class="mb-2">
       <v-card-title primary-title @click="openDialogUpdate(it)">
         <div>
-          <h3>{{it.front}}</h3>
+          <h3><i :class="`${it.lang} flag mr-2`"></i>{{it.front}}</h3>
           <div v-if="showBack">{{it.back}}</div>
           <div v-if="showTags">
             <v-chip v-for="tag in it.tags" color="primary" small text-color="white">{{tag}}</v-chip>
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-  import { getMemo } from '../api/recuerda';
+  import { getMemo, getTags, me } from '../api/recuerda';
   import FormAddWord from './FormAddWord';
 
   export default {
@@ -90,10 +90,19 @@
         .then((res) => {
           this.words = res.data.memos;
         });
+      getTags()
+        .then((res) => {
+          this.items = res.data.tags;
+        });
+      me();
     },
   };
 </script>
 
 <style scoped>
-
+  .flag {
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+  }
 </style>

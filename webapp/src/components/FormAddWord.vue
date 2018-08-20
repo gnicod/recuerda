@@ -18,7 +18,6 @@
         label="Tags"
         chips
         clearable
-        prepend-icon="filter_list"
         solo
         multiple
       >
@@ -32,7 +31,29 @@
           </v-chip>
         </template>
       </v-combobox>
-        <v-btn v-if="Object.keys(word).length !== 0" depressed large block v-on:click="addWord">Add</v-btn>
+      <v-combobox
+        v-model="lang"
+        :items="langItems"
+        label="Lang"
+        chips
+        clearable
+        solo
+      >
+        <template slot="selection" slot-scope="data">
+          <v-chip
+            :selected="data.selected"
+            close
+            @input="remove(data.item)"
+          >
+            <strong>{{ data.item }}</strong>&nbsp;
+          </v-chip>
+        </template>
+      </v-combobox>
+      <v-btn v-if="!word" depressed large block v-on:click="addWord">Add</v-btn>
+      <div v-if="word" >
+        <v-btn color="info" depressed large block v-on:click="addWord">Update</v-btn>
+        <v-btn color="error" depressed large block v-on:click="addWord">Delete</v-btn>
+      </div>
     </v-form>
     <v-snackbar
       v-model="snackbar"
@@ -64,8 +85,10 @@
         snackbar: false,
         front: '',
         back: '',
+        lang: '',
         tags: [],
         items: [],
+        langItems: ['es', 'cat'],
       };
     },
     watch: {
@@ -74,6 +97,7 @@
         this.front = newVal.front;
         this.back = newVal.back;
         this.tags = newVal.tags;
+        this.lang = newVal.lang;
       },
     },
     mounted() {
@@ -84,11 +108,13 @@
     },
     methods: {
       addWord() {
-        addMemo(this.front, this.back, this.tags)
+        addMemo(this.front, this.back, this.lang, this.tags)
           .then(() => {
             this.snackbar = true;
             this.front = '';
+            this.lang = '';
             this.back = '';
+            this.tags = [];
           });
       },
       remove(item) {
