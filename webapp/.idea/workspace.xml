@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9a5de202-21d1-435e-b653-a0df4b78a3b3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/recuerda.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/recuerda.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ResumeTraining.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResumeTraining.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Training.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Training.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TrainingWrapper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TrainingWrapper.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/WordsList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/WordsList.vue" afterDir="false" />
-    </list>
+    <list default="true" id="9a5de202-21d1-435e-b653-a0df4b78a3b3" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -71,7 +64,8 @@
           <entry key="css" value="8" />
           <entry key="html" value="35" />
           <entry key="js" value="872" />
-          <entry key="vue" value="8266" />
+          <entry key="md" value="2" />
+          <entry key="vue" value="8305" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -79,7 +73,8 @@
           <entry key="CSS" value="8" />
           <entry key="HTML" value="35" />
           <entry key="JavaScript" value="872" />
-          <entry key="Vue.js" value="8266" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="Vue.js" value="8305" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -90,6 +85,7 @@
           <entry key="gitrepo" value="1" />
           <entry key="html" value="2" />
           <entry key="js" value="15" />
+          <entry key="md" value="1" />
           <entry key="ts" value="1" />
           <entry key="vue" value="19" />
         </counts>
@@ -99,7 +95,7 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="2" />
           <entry key="JavaScript" value="15" />
-          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="PLAIN_TEXT" value="5" />
           <entry key="TypeScript" value="1" />
           <entry key="Vue.js" value="19" />
         </counts>
@@ -137,16 +133,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/ResumeTraining.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+            <state relative-caret-position="544">
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/WordsList.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="663">
@@ -292,7 +288,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="Word&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/WordsList.vue&#10;res&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/ResumeTraining.vue&#10;Tra&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/Training.vue&#10;App&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/App.vue&#10;au&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/auth/auth0-variables.js&#10;uti&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/utils.js&#10;esli&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/.eslintrc.js&#10;w&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/TrainingWrapper.vue&#10;router/in&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/router/index.js&#10;Tr&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/Training.vue&#10;app&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/App.vue&#10;pho&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/static/phoca-flags.css&#10;mai&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/main.js&#10;inde&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/index.html&#10;index&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/dist/index.html&#10;route&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/router" />
+    <property name="SearchEverywhereHistoryKey" value="REad&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/README.md&#10;Word&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/WordsList.vue&#10;res&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/ResumeTraining.vue&#10;Tra&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/Training.vue&#10;App&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/App.vue&#10;au&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/auth/auth0-variables.js&#10;uti&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/utils.js&#10;esli&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/.eslintrc.js&#10;w&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/TrainingWrapper.vue&#10;router/in&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/router/index.js&#10;Tr&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/components/Training.vue&#10;app&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/App.vue&#10;pho&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/static/phoca-flags.css&#10;mai&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/main.js&#10;inde&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/index.html&#10;index&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/dist/index.html&#10;route&#9;FILE&#9;file:///home/ovski/dev/recuerda/webapp/src/router" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -342,12 +338,12 @@
       <workItem from="1534714161175" duration="2358000" />
       <workItem from="1534795035062" duration="1784000" />
       <workItem from="1535193652953" duration="11415000" />
-      <workItem from="1535215999686" duration="12134000" />
+      <workItem from="1535215999686" duration="12406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80069000" />
+    <option name="totallyTimeSpent" value="80341000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2" y="0" width="1924" height="1061" extended-state="4" />
@@ -535,17 +531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/WordsList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="114" selection-start-line="39" selection-start-column="114" selection-end-line="39" selection-end-column="114" />
-          <folding>
-            <element signature="e#713#719#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#v-card-title#0;n#v-card#0;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TrainingWrapper.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="501">
@@ -555,8 +540,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/ResumeTraining.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        <state relative-caret-position="544">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/WordsList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="114" selection-start-line="39" selection-start-column="114" selection-end-line="39" selection-end-column="114" />
+          <folding>
+            <element signature="e#713#719#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#v-card-title#0;n#v-card#0;n#v-flex#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
