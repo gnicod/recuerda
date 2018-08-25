@@ -1,3 +1,4 @@
+import datetime
 import itertools
 import json, boto3, os, decimal
 import uuid
@@ -114,6 +115,46 @@ def add_memo(event, context):
             "body": message
         }
         return response
+
+
+def post_training(event, context):
+    data = json.loads(event["body"])
+    for k, v in data.items():
+        res = table.update_item(
+            Key={
+                'front': k,
+            },
+            UpdateExpression='SET last_training_date=:last, train=list_append(train, :train)',
+            ExpressionAttributeValues={
+                ':train': [v],
+                ':last': str(datetime.datetime.now())
+            },
+            ReturnValues="UPDATED_NEW"
+        )
+        # TODO can be optimize on client side
+        if len(res['Attributes']['train']) > 20:
+            last_20 = (res['Attributes']['train'])[-20:]
+            print(last_20)
+            print("too long")
+            res = table.update_item(
+                Key={
+                    'front': k,
+                },
+                UpdateExpression='SET train=:train',
+                ExpressionAttributeValues={
+                    ':train': last_20,
+                },
+                ReturnValues="UPDATED_NEW"
+            )
+    response = {
+        "statusCode": 200,
+        "headers": {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Credentials': True,
+        },
+        "body": json.dumps({"train": "success"}, cls=DecimalEncoder)
+    }
+    return response
 
 
 def search(event, context):

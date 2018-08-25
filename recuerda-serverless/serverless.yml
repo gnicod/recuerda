@@ -69,6 +69,15 @@ functions:
         method: post
         authorizer: auth
         cors: true
+  postTraining:
+    runtime: python3.6
+    handler: handler.post_training
+    events:
+    - http:
+        path: train
+        method: post
+        authorizer: auth
+        cors: true
   tags:
     runtime: python3.6
     handler: handler.tags

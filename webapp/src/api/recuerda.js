@@ -3,6 +3,7 @@ import axios from 'axios';
 const API_URL = 'https://1uwlb89d1i.execute-api.eu-west-1.amazonaws.com/dev';
 
 function callApi(path = '', method = 'get', payload = null) {
+  console.log('pqyloqd', payload);
   return axios({
     method,
     url: API_URL + path,
@@ -53,14 +54,13 @@ export function me() {
  */
 export function getMemo() {
   return callApi('/list');
-  /*
-    .then(response => {
-        this.info = response.data.bpi
-    })
-    .catch(error => {
-        console.log(error)
-        this.errored = true
-    })
-    .finally(() => this.loading = false)
-    */
+}
+
+/**
+ * post training result
+ * @param res
+ * @returns {*}
+ */
+export function postTraining(payload) {
+  return callApi('/train', 'POST', payload);
 }

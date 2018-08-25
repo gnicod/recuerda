@@ -36,8 +36,8 @@
     </v-combobox>
     <v-card v-for="it in words" style="width: 100%" class="mb-2">
       <v-card-title primary-title @click="openDialogUpdate(it)">
-        <div>
-          <h3><i :class="`${it.lang} flag mr-2`"></i>{{it.front}}</h3>
+        <div style="width: 100%">
+          <h3><i :class="`${it.lang} flag mr-2`"></i>{{it.front}} <v-progress-circular style="right: 0;float: right" class="" :value="80"></v-progress-circular></h3>
           <div v-if="showBack">{{it.back}}</div>
           <div v-if="showTags">
             <v-chip v-for="tag in it.tags" color="primary" small text-color="white">{{tag}}</v-chip>

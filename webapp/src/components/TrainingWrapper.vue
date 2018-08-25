@@ -76,7 +76,8 @@
 
             return words[rnd];
           };
-          const nbQuestions = memos.length >= 10 ? 10 : memos.length;
+          const nbMaxQuestions = 2;
+          const nbQuestions = memos.length >= nbMaxQuestions ? nbMaxQuestions : memos.length;
           for (let i = 1; i <= nbQuestions; i++) {
             const el = pickQuestion(memos, true);
             const training = {

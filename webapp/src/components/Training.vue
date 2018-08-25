@@ -42,7 +42,7 @@
     methods: {
       checkAnswer(i) {
         const question = this.question;
-        if (this.answers[i].front === this.question) {
+        if (this.answers[i].front === this.question.front) {
           window.setTimeout(() => {
             this.onRight(question);
           }, 500,
