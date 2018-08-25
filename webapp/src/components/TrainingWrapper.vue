@@ -9,7 +9,11 @@
       :answers="training[i].answers"
       :onRight="onRight"
       :onWrong="onWrong"/>
-    <resume-training v-if="i===training.length && training.length>0"/>
+    <resume-training
+      v-if="i===training.length && training.length>0"
+      :wrong="wrong"
+      :right="right"
+    />
   </v-container>
 </template>
 
@@ -31,15 +35,19 @@
         i: 0,
         nbRight: 0,
         training: [],
+        wrong: [],
+        right: [],
       };
     },
     methods: {
-      onRight() {
+      onRight(question) {
         this.nbRight = this.nbRight + 1;
         this.i = this.i + 1;
+        this.right.push(question);
       },
-      onWrong() {
+      onWrong(question) {
         this.i = this.i + 1;
+        this.wrong.push(question);
       },
     },
     mounted() {

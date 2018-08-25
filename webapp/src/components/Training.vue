@@ -37,15 +37,20 @@
       onWrong: Function,
     },
     data() {
-      return {
-      };
+      return { };
     },
     methods: {
       checkAnswer(i) {
-        if (this.answers[i].front === this.question.front) {
-          window.setTimeout(this.onRight, 500);
+        const question = this.question;
+        if (this.answers[i].front === this.question) {
+          window.setTimeout(() => {
+            this.onRight(question);
+          }, 500,
+          );
         } else {
-          window.setTimeout(this.onWrong, 500);
+          window.setTimeout(() => {
+            this.onWrong(question);
+          }, 500);
         }
       },
     },

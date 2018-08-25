@@ -1,5 +1,7 @@
 import itertools
 import json, boto3, os, decimal
+import uuid
+
 from boto3.dynamodb.conditions import Key, Attr
 
 dynamodb = boto3.resource('dynamodb')
@@ -88,6 +90,7 @@ def add_memo(event, context):
         data = json.loads(event["body"])
         body = {
             "user_id": get_user_id(event),
+            "uuid": uuid.uuid4().hex,
             "front": data["front"],
             "back": data["back"],
             "tags": data["tags"],
