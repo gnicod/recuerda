@@ -51,7 +51,7 @@
     "function-bind": "^1.1.0",
     "html-webpack-plugin": "^2.29.0",
     "http-proxy-middleware": "^0.17.4",
-    "webpack-bundle-analyzer": "^2.8.2",
+    "webpack-bundle-analyzer": "^3.6.0",
     "cross-env": "^5.0.1",
     "karma": "^1.7.0",
     "karma-coverage": "^1.1.1",
